@@ -1,2 +1,6 @@
-# pser
-Ejercicios resueltos de Programación de Servizos e Procesos. Curso 2023-24
+# Ejercicios de Programación de Servicios y Procesos ✍
+## DAMT - IES Chan do Monte - Curso 23/24
+
+# Unidad formativa
+ > Unidad formativa 1: **Concurrencia**
+### Ejemplos Thread y Runnable
