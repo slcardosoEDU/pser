@@ -4,4 +4,6 @@
 # Unidad formativa 1
  > **Concurrencia** - **Hilos**  - **Sincronización**
 ### [Ejemplos de creación de hilos en Java](src/ejemplos/crearhilos)
-### [Problema en el recreo](src/problema/recreo)
+### [Problemas](src/problema)
+* [Problema recreo](src/problema/recreo)
+* [Problema recreo con join](src/problema/recreo2/Recreo.java)
