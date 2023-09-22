@@ -1,5 +1,7 @@
 package problema.recreo;
 
+import javax.swing.JOptionPane;
+
 /**
  *Esta es la clase del hilo principal. <br>
  * 
@@ -22,7 +24,11 @@ public class Recreo {
     
     //Hilo principal
     public static void main(String[] args) {
-        
+        Comecocos c = new Comecocos();
+        c.start();
+        JOptionPane.showMessageDialog(null, "Presiona el botón para parar.");
+        c.detener();
+        System.out.println(c.getMensaje());
     }
     
 }
