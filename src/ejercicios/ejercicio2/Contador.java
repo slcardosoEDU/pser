@@ -1,4 +1,7 @@
+package ejercicios.ejercicio2;
+
 import java.util.Random;
+
 public class Contador {
  private int contador;
  private Random random;
