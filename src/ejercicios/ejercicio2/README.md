@@ -1,11 +1,8 @@
-# Problema del Comecocos 2
-El **comecocos** es un juego infantil de papel que consiste en una pequeña papiroflexia [que se puede hacer con una hoja de papel](https://www.youtube.com/watch?v=fJp6fdftLpw).  
-Para jugar, se hace girar la papiroflexia en la mano y se abre y cierra varias veces hasta que el jugador decide parar.
-Luego, se abre el comecocos y se revela un mensaje o pregunta que el jugador debe responder.
+# Ejercicio 2: Cambio de un dato común por parte de varios hilos
+Realice una aplicación que cree NUM_HILOS hilos que incrementen NUM_INCREMENTOS un dato común.  
+Al final se visualizará el valor del dato verificando si su valor es NUM_HILOS*NUM_INCREMENTOS.
 
-## Desarrollo
-Repetiremos el problema del comecocos, pero esta vez lanzaremos tanto el botón como el comecocos en
-hilos independientes al hilo principal. La dificultad de este problema radica en como sincronizar
-estos 3 hilos.
-
-
+## Problemas que se pueden dar:
+* Se crea un dato para cada hilo, no uno común
+* Se visualiza el valor en el hilo principal antes de que acaben todos los incrementos
+* Sin código sincronizado no se puede asegurar que se incremente de manera correcta.
