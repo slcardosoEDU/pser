@@ -1,11 +1,13 @@
 package ejercicios.ejercicio2;
 
 /**
- *
- * @author Samuel
+ * Varios hilos incrementando un contador.
+ * @author Samuel Loureiro Cardoso
  */
 public class Principal {
-    
+    /**
+     * Número de hilos que incrementarán concurrentemente el contador.
+     */
     public static final int NUM_HILOS = 5;
     
     public static void main(String[] args) throws InterruptedException {
@@ -17,7 +19,8 @@ public class Principal {
             hilos[i].start();
             
         }
-        
+        //Necesitamos esperar a que terminen todos los hilos antes de
+        // imprimir el resultado.
         for (int i = 0; i < NUM_HILOS; i++) {
             hilos[i].join();
         }

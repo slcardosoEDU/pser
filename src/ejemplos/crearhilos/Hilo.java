@@ -5,8 +5,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author usuarioa
+ * Esta clase hereda de Thread. Puede ejecutarse el código del método run() en un
+ * hilo llamando al método {@link Thread#start() }
+ * @author Samuel Loureiro Cardoso
  */
 public class Hilo extends Thread{
     
@@ -14,6 +15,11 @@ public class Hilo extends Thread{
         super(nombre);        
     }
     
+    /**
+     * Tarea que se ejecuta en paralelo. <br>
+     * Cuando finaliza el método run el hilo pasa a estado "muerto" y
+     * no podrá volver a ser lanzado.
+     */
     public void run(){
         try {
             System.out.println(super.getName()+":Haciendo una cosa");
