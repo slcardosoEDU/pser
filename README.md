@@ -9,3 +9,4 @@
 * [Problema recreo con join](src/problema/recreo2/Recreo.java)
 ### [Ejercicios](src/ejercicios)
 * [Ejercicio 2](src/ejercicios/ejercicio2)
+* [Ejercicio 3](src/ejercicios/ejercicio3)
