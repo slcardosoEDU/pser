@@ -2,7 +2,7 @@ package ejemplos.productorconsumidor;
 
 /**
  *
- * @author usuarioa
+ * @author samuel
  */
 public class Bufer {
     

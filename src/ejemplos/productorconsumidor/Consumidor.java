@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author usuarioa
+ * @author samuel
  */
 public class Consumidor extends Thread{
     
