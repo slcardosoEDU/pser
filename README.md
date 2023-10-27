@@ -12,3 +12,4 @@
 ### [Ejercicios](src/ejercicios)
 * [Ejercicio 2](src/ejercicios/ejercicio2)
 * [Ejercicio 3](src/ejercicios/ejercicio3)
+* [Ejercicio 4](src/ejercicios/ejercicio4)
