@@ -24,7 +24,7 @@ public class Empleado extends Thread{
         for(int i=0; i<NUM_APUESTAS_EMPLEADO; i++){
             Apuesta ap = new Apuesta(this,Resultado.getResultadoAleatorio());
             //System.err.println("->Apuesta"+i+"\t"+ap);
-            bote.anadirApuesta(ap);
+            bote.apostar(ap);
         }
     }
 
