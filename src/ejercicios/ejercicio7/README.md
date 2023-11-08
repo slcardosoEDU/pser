@@ -10,7 +10,9 @@ En dicha porra participarán los NUM_EMPLEADOS (hilos) de la empresa. Para ello 
     * DM2 nunca ha metido más de MAX_GOLES~4 goles en ningún partido de su historia
     * PRF no quiere abusar de su calidad y se compromete a no meter más de MAX_GOLES
     * cada empleado apuesta 1€ cada vez (MEJORA: incrementa en cada apuesta en 1€)
+
 Cada empleado realizará NUM_APUESTAS_EMPLEADO (~ 5)
+
 Finalmente se juega el partido y se visualizarán los resultados:
 * del partido
 * total de € ingresados (~ de apuestas)
