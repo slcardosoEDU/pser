@@ -21,8 +21,7 @@ public class Main {
         Resultado r = Resultado.getResultadoAleatorio();
         System.out.println(bote);
         System.out.println("RESULTADO "+r);
-        System.out.println(bote.getGanadores(r));
-        
+        System.out.println(bote.getGanadores(r));  
         
 
            
