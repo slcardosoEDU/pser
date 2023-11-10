@@ -23,7 +23,7 @@ public class Bote {
         apuestas = new HashMap<Resultado, ArrayList<Apuesta>>();
     }
 
-    public void apostar(Apuesta ap) {
+    public void anadirApuesta(Apuesta ap) {
         ArrayList<Apuesta> existentes;
         //Sincronizamos a nivel de bote para realizar la apuesta. "Leer el importe actual apostado"
         synchronized (this) {
@@ -50,6 +50,62 @@ public class Bote {
 
     }
     
-    
+    public int getTotalBote(){
+        int totalBote = 0;
+        for (Resultado r : apuestas.keySet()) {
+            for (Apuesta ap : apuestas.get(r)) {
+                totalBote += ap.getImporte();
+            }
+        }
+        return totalBote;
+    }
+
+    public String getGanadores(Resultado r) {
+        ArrayList<Apuesta> aciertos = apuestas.get(r);
+        HashMap<Empleado, Integer> ganadores = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        if (aciertos == null) {
+            return "No hay ganadores.";
+        }
+        //Cantidad total apostada al resultado ganador.
+        int cantidadApostada = 0;
+        for (Apuesta a : aciertos) {
+            Empleado e = a.getEmpleado();
+            if(ganadores.containsKey(e)){
+                ganadores.put(e, ganadores.get(e)+a.getImporte());
+            }else{
+                ganadores.put(e, a.getImporte());
+            }
+            cantidadApostada += a.getImporte();
+        }
+        sb.append("\tGANADORES\n");
+        for(Empleado e: ganadores.keySet()){
+            sb.append(e);
+            sb.append("\tgana\t");
+            sb.append(String.format("%.2f", (double)getTotalBote()*ganadores.get(e)/cantidadApostada));
+            
+            sb.append("\n");
+        }
+        
+        return sb.toString();
+    }
+   
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        int totalBote = 0;
+        for (Resultado r : apuestas.keySet()) {
+            for (Apuesta ap : apuestas.get(r)) {
+                sb.append(ap);
+                sb.append("\n");
+                totalBote += ap.getImporte();
+            }
+        }
+        sb.append("TOTAL\t[");
+        sb.append(totalBote);
+        sb.append("€]");
+        return sb.toString();
+    }
 
 }
