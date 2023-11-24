@@ -21,7 +21,7 @@ public class Hwwc {
 
     }
 
-    public static Hwwc getInstancia() {
+    public synchronized static Hwwc getInstancia() {
         if (singleton == null) {
             singleton = new Hwwc();
         }
@@ -39,19 +39,23 @@ public class Hwwc {
                 return;
             int pos = r.nextInt(meteoritos.size());
             Meteorito m = meteoritos.get(pos);
-            //isTaladrado?
-            //TODO Repostar nave A
-            meteoritos.remove(pos);
+            
+            if(m.boom()){
+               meteoritos.remove(pos);
+                System.out.println(m+" explotado!");
+            }
+            
         }
         
     }
 
-    public void taladrar() {
+    public void taladrar() throws InterruptedException {
         Meteorito m;
         Random r = new Random();
-        if(meteoritos.isEmpty())
-                return;
+        
         synchronized (meteoritos) {
+            if(meteoritos.isEmpty())
+                return;
             int pos = r.nextInt(meteoritos.size());
             m = meteoritos.get(pos);
         }

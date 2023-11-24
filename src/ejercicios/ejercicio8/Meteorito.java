@@ -18,8 +18,25 @@ public class Meteorito {
         return taladrado;
     }
     
-    public void taladrar(){
+    public synchronized boolean boom(){
+        if(!taladrado){
+            return false;
+        }
+                System.out.println(Thread.currentThread().getName()+" explotando "+this);    
+
+        //Reposta la nave A
+        notify();        
+        //Se va la nave A
+        return true;
+    }
+    
+    public synchronized void taladrar() throws InterruptedException{
+        if(taladrado){
+            return;
+        }
+        System.out.println(Thread.currentThread().getName()+" taladrando "+this);    
         taladrado = true;
+        wait();
     }
 
     public int getNumero() {
@@ -56,7 +73,7 @@ public class Meteorito {
 
     @Override
     public String toString() {
-        return "Meteorito "+numero+(taladrado?"(taladrado)":"");
+        return "Meteorito "+numero;
     }
     
     

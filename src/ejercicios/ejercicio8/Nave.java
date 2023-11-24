@@ -5,7 +5,7 @@ package ejercicios.ejercicio8;
  * @author usuarioa
  */
 public abstract class Nave extends Thread {
-    
+
     public Nave(String nombre){
         super("Nave "+ nombre);
         
