@@ -8,7 +8,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
+ * Esta clase representa un servidor echo muy básico. <br>
+ * Lo único que hace es esperar a que se conecte un cliente,
+ * aceptar la conexión, recibir un mensaje y reenviar ese mismo mensaje.
  * @author samuel
  */
 public class Servidor {
@@ -32,11 +34,7 @@ public class Servidor {
                 seguir = false;
             }           
         }
-        cliente.close();
-        
-        
-        
-        
+        cliente.close();       
         
     }
 

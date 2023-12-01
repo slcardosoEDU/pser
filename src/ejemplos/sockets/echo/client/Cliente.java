@@ -7,7 +7,10 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- *
+ *Esta clase representa un cliente que envía un mensaje de echo a un servidor local. <br>
+ * El cliente solicita al usuario un mensaje, se conecta al servidor, se lo envía
+ * y espera la respuesta. Una vez recibida la respuesta se termina la conexión y el
+ * programa.
  * @author samuel
  */
 public class Cliente {
