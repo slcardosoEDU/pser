@@ -7,31 +7,31 @@ import java.util.Random;
  * @author Samuel
  */
 public class Proveedor extends Thread{
-    private int numProductos;
-    public final static int MAX_PRODUCTOS = 100;
-    public final static int OFERTA_PRODUCTOS = 10;
+    private int numEntradas;
+    public final static int TOTAL_ENTRADAS = 100;
+    
     private PuntoVenta ptv;
     public Proveedor(PuntoVenta ptv) {
-        numProductos = MAX_PRODUCTOS;
+        numEntradas = TOTAL_ENTRADAS;
         this.ptv = ptv;
     }
     
     public void run(){
         System.out.println("Proveedor empieza a vender.");
-        while(numProductos > 0){
+        while(numEntradas > 0){
             //Gestionar interrupciones
             if(isInterrupted()){
-                System.out.println("Proveedor-sobran-"+numProductos);
+                System.out.println("Proveedor-sobran-"+numEntradas);
                 return;
             }
             
             try {
                 Thread.sleep(new Random().nextInt(800)+200);
-                int productosDispo = OFERTA_PRODUCTOS;
-                if(numProductos < OFERTA_PRODUCTOS){
-                    productosDispo = numProductos;
+                int productosDispo = PuntoVenta.MAX_ENTRADAS;
+                if(numEntradas <  PuntoVenta.MAX_ENTRADAS){
+                    productosDispo = numEntradas;
                 }
-                numProductos -= ptv.reponer(productosDispo);
+                numEntradas -= ptv.reponer(productosDispo);
             } catch (InterruptedException ex) {
                 interrupt();
             }

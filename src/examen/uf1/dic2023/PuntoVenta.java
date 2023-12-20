@@ -74,8 +74,10 @@ public class PuntoVenta {
                     return 0;
                 //Se comprarn las entradas que quedan.
                 compradas = stockEntradas;
+            }else{
+               wait(); 
             }
-            wait();
+            
         }
 
         stockEntradas -= compradas;
