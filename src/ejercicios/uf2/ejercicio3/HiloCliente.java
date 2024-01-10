@@ -31,7 +31,7 @@ public class HiloCliente extends Thread {
             in = new DataInputStream(cliente.getInputStream());
             
             String mensaje;
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb;
             //Esperamos el nombre de usuario
             mensaje = in.readUTF();
             if (registrarCliente(mensaje)) {
@@ -41,6 +41,7 @@ public class HiloCliente extends Thread {
                 }
                 
                 while (true) {
+                    sb = new StringBuilder();
                     mensaje = in.readUTF();
                     if (Conexion.FIN.equalsIgnoreCase(mensaje)) {
                         enviarMensaje(Conexion.FIN_CONN_CLIENTE);
@@ -57,7 +58,7 @@ public class HiloCliente extends Thread {
                     sb.append("\n");
                     sb.append("Escriba el nombre del usuario que quiere comprobar, "
                             + "'Fin' para terminar o 'shutdown' para apagar el servidor remoto");
-                    enviarMensaje(sb.toString());
+                    enviarMensaje(sb.toString());                    
                     
                 }
 
@@ -94,8 +95,13 @@ public class HiloCliente extends Thread {
         synchronized (Servidor.CLIENTES_CONECTADOS) {
             this.nombre = nombre;
             if (Servidor.CLIENTES_CONECTADOS.contains(this)) {
-                System.err.println("Rechazando conexion para " + nombre);
-                
+                try {
+                    System.err.println("Rechazando conexion para " + nombre);
+                    enviarMensaje(Conexion.FIN_CONN_CLIENTE);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(HiloCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 return false;
             }
             
