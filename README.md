@@ -27,3 +27,6 @@
 ### [Problemas](src/problema)
 
 ### [Ejercicios](src/ejercicios)
+* [Ejercicio 1](src/ejercicios/uf2/ejercicio1)
+* [Ejercicio 2](src/ejercicios/uf2/ejercicio2)
+* [Ejercicio 3](src/ejercicios/uf2/ejercicio3)
