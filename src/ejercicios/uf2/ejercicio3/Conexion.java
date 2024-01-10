@@ -1,10 +1,7 @@
 package ejercicios.uf2.ejercicio3;
 
-import ejercicios.uf2.ejercicio2.*;
-import ejercicios.uf2.ejercicio1.*;
 import static ejemplos.sockets.echo.client.Cliente.IP;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;

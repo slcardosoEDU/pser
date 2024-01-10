@@ -1,6 +1,5 @@
 package ejercicios.uf2.ejercicio3;
 
-import ejercicios.uf2.ejercicio2.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -34,8 +33,7 @@ public class Cliente {
                 //El servidor responde
                 respuesta = in.readUTF();
                 System.out.println(respuesta);
-            } while (!Conexion.FIN_CONN_CLIENTE.equalsIgnoreCase(respuesta)
-                    && Conexion.FIN.equalsIgnoreCase(respuesta));
+            } while (!Conexion.FIN_CONN_CLIENTE.equalsIgnoreCase(respuesta));
 
             servidor.close();
 

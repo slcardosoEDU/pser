@@ -1,7 +1,5 @@
 package ejercicios.uf2.ejercicio3;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -45,7 +43,7 @@ public class Servidor {
             }
 
         } catch (IOException ex) {
-            //Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Apagando...");
 
