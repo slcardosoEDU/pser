@@ -11,6 +11,7 @@
 * [Problema recreo](src/problema/recreo)
 * [Problema recreo con join](src/problema/recreo2/Recreo.java)
 * [Examen diciembre 2023](src/examen/uf1/dic2023)
+* [Ejercicio hucha (simulacro)](src/problema/hucha)
 ### [Ejercicios](src/ejercicios)
 * [Ejercicio 2](src/ejercicios/ejercicio2)
 * [Ejercicio 3](src/ejercicios/ejercicio3)
