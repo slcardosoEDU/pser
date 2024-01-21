@@ -1,4 +1,4 @@
-#HUCHA
+# HUCHA
 Los padres de una familia numerosa aportan a la hucha familiar semanalmente (por practicidad, simulémoslo con una vez cada ~ segundo) una cantidad de dinero INGRESO_HUCHA~10€.
 
 Los NUM_HIJOS~5 son muy derrochadores, retirando cada cierto tiempo aleatorio (entre MIN_ESPERA y MAX_ESPERA ms.) y poco a poco (para que no se note mucho) dinero de la hucha en una progresión acumulada (1€,1€,2€,3€,5€,8€,13€...) que responde a la secuencia
