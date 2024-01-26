@@ -29,23 +29,25 @@ public class HiloCliente extends Thread {
             //Solicitamos el nombre
             System.out.println(getTime() + "\tRecibido cliente " + cliente.getRemoteSocketAddress());
             in = new DataInputStream(cliente.getInputStream());
-            
+
             String mensaje;
             StringBuilder sb;
+            //Solicitamos el nombre de usuario
+            enviarMensaje("Introduzca un nombre para el usuario: ");
             //Esperamos el nombre de usuario
             mensaje = in.readUTF();
             if (registrarCliente(mensaje)) {
                 synchronized (this) {
-                   enviarMensaje("Escriba el nombre del usuario que quiere comprobar, "
-                        + "'Fin' para terminar o 'shutdown' para apagar el servidor remoto"); 
+                    enviarMensaje("Escriba el nombre del usuario que quiere comprobar, "
+                            + "'Fin' para terminar o 'shutdown' para apagar el servidor remoto");
                 }
-                
+
                 while (true) {
                     sb = new StringBuilder();
                     mensaje = in.readUTF();
                     if (Conexion.FIN.equalsIgnoreCase(mensaje)) {
                         enviarMensaje(Conexion.FIN_CONN_CLIENTE);
-                        
+
                         Servidor.CLIENTES_CONECTADOS.remove(this);
                         break;
                     }
@@ -58,31 +60,33 @@ public class HiloCliente extends Thread {
                     sb.append("\n");
                     sb.append("Escriba el nombre del usuario que quiere comprobar, "
                             + "'Fin' para terminar o 'shutdown' para apagar el servidor remoto");
-                    enviarMensaje(sb.toString());                    
-                    
+                    enviarMensaje(sb.toString());
+
                 }
 
+            }else{
+                enviarMensaje("El nombre de usuario ya existe.");
+                enviarMensaje(Conexion.FIN_CONN_CLIENTE);
             }
 
-            //Consultas
+            
         } catch (IOException ex) {
             Logger.getLogger(HiloCliente.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Cerrando cliente " + nombre);
-        } 
+        }
 
         System.out.println(this.nombre + " desconectado.");
 
     }
 
-    
-    private synchronized void enviarMensaje(String mensaje) throws IOException{
+    private synchronized void enviarMensaje(String mensaje) throws IOException {
         DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
         out.writeUTF(mensaje);
     }
-    
+
     public synchronized void shutdown() {
         try {
-            
+
             enviarMensaje(Conexion.FIN_CONN_CLIENTE);
             cliente.close();
 
@@ -95,16 +99,10 @@ public class HiloCliente extends Thread {
         synchronized (Servidor.CLIENTES_CONECTADOS) {
             this.nombre = nombre;
             if (Servidor.CLIENTES_CONECTADOS.contains(this)) {
-                try {
-                    System.err.println("Rechazando conexion para " + nombre);
-                    enviarMensaje(Conexion.FIN_CONN_CLIENTE);
-                    
-                } catch (IOException ex) {
-                    Logger.getLogger(HiloCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                System.err.println("Rechazando conexion para " + nombre);
                 return false;
             }
-            
+
             Servidor.CLIENTES_CONECTADOS.add(this);
         }
         synchronized (Servidor.HISTORICO_CONEXIONES) {
@@ -121,9 +119,8 @@ public class HiloCliente extends Thread {
         sb.append(" ");
         String conectado = "no conectado ";
         synchronized (Servidor.CLIENTES_CONECTADOS) {
-            for(HiloCliente hc:Servidor.CLIENTES_CONECTADOS){
-                if(nombre.equals(hc.getNombre()))
-                {
+            for (HiloCliente hc : Servidor.CLIENTES_CONECTADOS) {
+                if (nombre.equals(hc.getNombre())) {
                     conectado = "conectado ";
                     break;
                 }
@@ -170,8 +167,6 @@ public class HiloCliente extends Thread {
         final HiloCliente other = (HiloCliente) obj;
         return Objects.equals(this.nombre, other.nombre);
     }
-
-    
 
     @Override
     public String toString() {
