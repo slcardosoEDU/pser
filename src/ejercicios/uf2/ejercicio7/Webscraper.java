@@ -48,7 +48,6 @@ public class Webscraper {
             fin = parser[i].indexOf("</span>",inicio);
             Double area = Double.valueOf(parser[i].substring(inicio, fin));
             paises.add(new Pais(pais, capital, area, poblacion));
-            //System.out.println(capital+": "+poblacion);
         }
         //Mostrar lista de paises
         for(Pais p: paises){
