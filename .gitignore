@@ -28,3 +28,4 @@ build.xml
 hs_err_pid*
 replay_pid*
 /dist/
+/pser/nbproject/private/
